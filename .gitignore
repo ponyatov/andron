@@ -5,5 +5,4 @@ wiki/
 .idea/
 gz/
 tools/
-jdk-9/
-
+jdk1.8.0_144/
