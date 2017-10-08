@@ -21,18 +21,23 @@ XPATH = PATH=$(JAVA_HOME)/bin:$(CWD)/tools/bin:$(PATH) JAVA_HOME=$(JAVA_HOME) AN
 AVD = $(XPATH) avdmanager
 SDKMAN = $(XPATH) sdkmanager
 # --verbose 
+EMU = $(XPATH) LD_LIBRARY_PATH=emulator/lib64/qt/lib emulator/emulator64-x86
+#/lib 
 
 .PHONY: avd
 avd: doc
+	$(EMU) -list-avds
 #	$(AVD) create avd --name tinydron --abi google_apis/x86_64 --package 'system-images;android-19;google_apis;x86_64'
 
 .PHONY: install
 install: $(GNU) $(SDK)/android doc
 	cd $(SDK) ; $(SDKMAN) --update
-	cd $(SDK) ; echo y| $(SDKMAN) --install "platform-tools" "platforms;android-19" "emulator"
+	cd $(SDK) ; echo y| $(SDKMAN) --install "platform-tools" "platforms;android-19" "emulator" "system-images;android-19;default;x86"
 	cd $(SDK) ; $(SDKMAN) --list 
 $(GNU):
 	sudo apt install make g++ flex bison
+	sudo apt install lib32stdc++6 lib32z1 libgl1-mesa-dev lib64stdc++6:i386 mesa-utils qt5-default
+	
 $(SDK)/android: $(GZ)/$(SDK_GZ) $(JDK)/README.html
 	unzip $< && touch $@
 	
