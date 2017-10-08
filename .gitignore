@@ -6,3 +6,9 @@ wiki/
 gz/
 tools/
 jdk1.8.0_144/
+.knownPackages
+licenses/
+platforms/
+platform-tools/
+patcher/
+emulator/

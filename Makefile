@@ -16,10 +16,11 @@ SDK_URL = https://dl.google.com/android/repository/$(SDK_GZ)
 
 DOC = doc/Thinking21cent.pdf doc/Threaded_interpretive_languages.pdf
 
-XPATH = PATH=$(JAVA_HOME)/bin:$(CWD)/tools/bin:$(PATH) JAVA_HOME=$(JAVA_HOME)
+XPATH = PATH=$(JAVA_HOME)/bin:$(CWD)/tools/bin:$(PATH) JAVA_HOME=$(JAVA_HOME) ANDROID_HOME=$(CWD)/$(SDK) ANDROID_SDK_HOME=$(CWD)/$(SDK)
 
 AVD = $(XPATH) avdmanager
 SDKMAN = $(XPATH) sdkmanager
+# --verbose 
 
 .PHONY: avd
 avd: doc
@@ -27,7 +28,9 @@ avd: doc
 
 .PHONY: install
 install: $(GNU) $(SDK)/android doc
-	$(SDKMAN) --verbose --update
+	cd $(SDK) ; $(SDKMAN) --update
+	cd $(SDK) ; echo y| $(SDKMAN) --install "platform-tools" "platforms;android-19" "emulator"
+	cd $(SDK) ; $(SDKMAN) --list 
 $(GNU):
 	sudo apt install make g++ flex bison
 $(SDK)/android: $(GZ)/$(SDK_GZ) $(JDK)/README.html
