@@ -7,7 +7,6 @@ JDK_VER = 8u144
 JDK = jdk1.8.0_144
 JAVA_HOME = $(CWD)/$(JDK)
 JDK_GZ = jdk-$(JDK_VER)-linux-x64.tar.gz
-JDK_URL = http://download.oracle.com/otn-pub/java/jdk/9+181/$(JDK_GZ)
 JDK_URL = http://download.oracle.com/otn-pub/java/jdk/$(JDK_VER)-b01/090f390dda5b47b9b721c7dfaa008135/$(JDK_GZ)
 
 SDK_VER = 3859397
@@ -21,7 +20,6 @@ AVD = $(XPATH) avdmanager
 
 .PHONY: avd
 avd:
-	echo $(JDK_GZ) ; exit -1
 	$(AVD)
 
 .PHONY: install
