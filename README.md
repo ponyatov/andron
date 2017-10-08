@@ -3,7 +3,7 @@
 
 Android template/script project
 * minimal set of project files allows to open in Android Studio
-* or use any source editor and make tool (on Linux)
+* or use any source editor and `make` tool (on Linux)
 * bytecode based `Forth` script engine
 * and assembler/compiler written in `flex/bison/C++`
 
@@ -13,10 +13,10 @@ github: https://github.com/ponyatov/andron
 
 ### Build
 
-Tools must be preinstalled:
-* GNU toolchain (`make`, `g++`, `flex`, `bison`)
-* Java 7 SDK
-* [Android SDK](https://developer.android.com/studio/index.html#downloads) download [zip](https://dl.google.com/android/repository/sdk-tools-linux-3859397.zip)
+Tools must be preinstalled: `make install` (only Linux `x86_64` supported)
+* GNU toolchain (`make`, `g++`, `flex`, `bison`) -- will be installed via `apt`
+* Java SDK -- will be locally installed latest JDK v.9
+* [Android SDK](https://developer.android.com/studio/index.html#downloads) download `sdk-tools-linux-3859397.zip` -- will be locally installed into `tools/`
 
 Clone project from GitHub (default directory will disturb you with `~/android-studio`)
 

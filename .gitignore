@@ -1,7 +1,9 @@
 *~
 *.swp
 .*.html
+wiki/
 .idea/
 gz/
 tools/
+jdk-9/
 
