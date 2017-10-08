@@ -6,6 +6,11 @@ SDK =
 SDK_GZ = sdk-tools-linux-$(SDK_VER).zip
 SDK_URL = https://dl.google.com/android/repository/$(SDK_GZ)
 
+.PHONY: tools
+tools: tools/android
+tools/android: $(GZ)/$(SDK_GZ)
+	unzip $< && touch $@
+
 .PHONY: install
 install: $(GZ)/$(SDK_GZ)
 	sudo apt install make g++ flex bison
